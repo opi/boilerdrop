@@ -1,0 +1,5 @@
+#!/bin/bash
+
+git pull origin master
+rm config/staging/*
+cp config/versioned/* config/staging/
