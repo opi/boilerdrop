@@ -29,7 +29,7 @@ TODO.md).
 
 Use the following configuration in your `settings.php` file.
 
-```
+```php
 $config_directories['active'] = '../config/active';
 $config_directories['staging'] = '../config/staging';
 ```
@@ -41,10 +41,10 @@ Ressources:
 
 ## Configuration managment usage
 
-### Export (development process)
+### Export (development process)
 
-```
-$ ./scripts/config_export
+```bash
+./scripts/config_export
 ```
 
 It will export current configuration into the `config/versionned` folder. Use 
@@ -52,8 +52,8 @@ It will export current configuration into the `config/versionned` folder. Use
 
 ### Import (in production)
 
-```
-$ ./scripts/config_import
+```bash
+./scripts/config_import
 ```
 
 It will import versioned configuration from the `config/versionned` folder.
