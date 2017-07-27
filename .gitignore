@@ -3,20 +3,21 @@ config/active
 config/staging
 
 # .htaccess file
-www/.htaccess
-www/.htpasswd
+docroot/.htaccess
+docroot/.htpasswd
 
 # Ignore configuration files that may contain sensitive information.
-www/settings.local.php
+docroot/settings.local.php
 
 # Ignore paths that contain user-generated content.
-www/files
-www/private
+docroot/files
+docroot/private
 sites/*/files
 sites/*/private
 
 # Development modules
-www/modules/devel
+docroot/modules/devel
+docroot/modules/contrib/devel
 
 # OS generated files
 .DS_Store*
