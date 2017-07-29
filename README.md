@@ -11,7 +11,7 @@ BackdropCMS project boilerplate
 ├── config
 │   ├── active (*ignored*)
 │   ├── staging (*ignored*)
-│   └── versioned (**versionned**)
+│   └── versioned (**versioned**)
 ├── docroot (Your website lives here)
 └── scripts
     ├── config_export
@@ -47,7 +47,7 @@ Ressources:
 ./scripts/config_export
 ```
 
-It will export current configuration into the `config/versionned` folder. Use 
+It will export current configuration into the `config/versioned` folder. Use
 `git diff` to review changes.
 
 ### Import (in production)
@@ -56,7 +56,7 @@ It will export current configuration into the `config/versionned` folder. Use
 ./scripts/config_import
 ```
 
-It will import versioned configuration from the `config/versionned` folder.
+It will import versioned configuration from the `config/versioned` folder.
 
 Visit `yoursite.com/admin/config/development/configuration/full/import` to
 update your production site.
