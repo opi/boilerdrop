@@ -1,6 +1,8 @@
 # BoilerDrop
 
-BackdropCMS project boilerplate
+BackdropCMS project boilerplate.
+
+**/!\\** This is a work in progress. Always backup your stuff before testing new tools. Contributions are welcome. **/!\\**
 
 ## File structure
 
@@ -60,3 +62,7 @@ It will import versioned configuration from the `config/versioned` folder.
 
 Visit `yoursite.com/admin/config/development/configuration/full/import` to
 update your production site.
+
+### Todo
+
+See [TODO.md](TODO.md).
