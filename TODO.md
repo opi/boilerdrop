@@ -8,3 +8,4 @@
 
 - [ ] Code check helpers (PHPCS and other CSS/JS linters)
 
+- [ ] Create private files directory, outside of webroot, with proper permissions.
