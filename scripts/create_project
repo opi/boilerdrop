@@ -1,0 +1,102 @@
+#!/bin/bash
+
+# Any subsequent(*) commands which fail will cause the shell script to exit immediately
+set -e
+
+# User input
+PROJECT_NAME=$1
+PROJECT_LANGUAGE=$2
+
+# Global variables
+BACKDROP_STABLE_VERSION="1.8.0"
+
+
+check_project_name() {
+    if [ -z "$PROJECT_NAME" ]; then
+        echo "[ERROR] You must provide a project name"
+        echo $"Usage: $0 <project_name> <language>"
+        exit 1
+    fi
+
+    if ! [[ $PROJECT_NAME =~ ^[[:alnum:]]+$ ]]; then
+        echo "[ERROR] Incorrect project name (must be only alphanumeric characters)"
+        echo $"Usage: $0 <project_name> <language>"
+        exit 1        
+    fi
+    
+}
+
+check_project_language() {
+    if ! [[ $PROJECT_LANGUAGE =~ ^[[:lower:]]{2}$ ]]; then
+        echo "[ERROR] Incorrect language country code (must be a 2 lowercase letter code)"
+        echo $"Usage: $0 <project_name> <language>"
+        exit 1
+    fi
+}
+
+download_sources() {
+    echo "... Downloading sources for $PROJECT_NAME"
+    wget -q "https://github.com/backdrop/backdrop/releases/download/$BACKDROP_STABLE_VERSION/backdrop.zip"
+    unzip -qq backdrop.zip
+    mv backdrop/{.[!.],}* docroot/
+
+    # Cleanup
+    rmdir backdrop
+    rm backdrop.zip
+}
+
+remove_sources_placeholder() {
+    rm docroot/.placeholder
+}
+
+download_translations() {
+    if [ -n "$PROJECT_LANGUAGE" ]; then
+        echo "... Downloading $PROJECT_LANGUAGE translations"
+        mkdir -p docroot/files/translations
+        wget -q "http://ftp.drupal.org/files/translations/7.x/drupal/drupal-7.56.$PROJECT_LANGUAGE.po"
+        mv drupal-7.56.fr.po docroot/files/translations
+    fi
+}
+
+create_local_settings_file() {
+    # Copy local settings file
+    cp scripts/templates/settings.local.php docroot/settings.local.php
+
+    # Replace variable
+    sed -i "s#@@PROJECT_NAME@@#$PROJECT_NAME#g" docroot/settings.local.php
+
+    echo "... Creating settings.local.php file. You must edit database configuration before proceeding to installation."
+}
+
+create_drush_aliases_file() {
+    # Get current docroot path
+    DOCROOT_PATH="`pwd`/docroot"
+
+    # Create drush folder
+    mkdir -p docroot/drush
+
+    # Copy aliases file
+    cp scripts/templates/project.aliases.drushrc.php docroot/drush/$PROJECT_NAME.aliases.drushrc.php
+
+    # Replace variable
+    sed -i "s#@@DOCROOT_PATH@@#$DOCROOT_PATH#g" docroot/drush/$PROJECT_NAME.aliases.drushrc.php
+    sed -i "s#@@PROJECT_NAME@@#$PROJECT_NAME#g" docroot/drush/$PROJECT_NAME.aliases.drushrc.php
+
+    echo "... Creating Drush aliases file. You must review this file."
+}
+
+# Various checks
+check_project_name
+check_project_language
+
+# Download upstream sources
+download_sources
+remove_sources_placeholder
+download_translations
+
+# Create local files
+create_local_settings_file
+create_drush_aliases_file
+
+echo ""
+echo "$PROJECT_NAME successfully created, congrats !"
