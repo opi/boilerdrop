@@ -27,6 +27,9 @@ Clone this repository and remove the `.git` folder.
 Install BackdropCMS into the `docroot` folder (helper script to come, see
 TODO.md).
 
+*Experimental:* Use the `create_project` script to automatically download sources, translations and create local settings and drush aliases files.    
+Usage: `./scripts/create_project <project_name> <language>`
+
 ## Configuration managment settings
 
 Use the following configuration in your `settings.php` file.
