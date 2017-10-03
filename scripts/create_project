@@ -45,6 +45,16 @@ download_sources() {
     rm backdrop.zip
 }
 
+create_files_folder() {
+    # Public files
+    mkdir -p docroot/files
+    chmod g+w docroot/files
+
+    # Private files
+    mkdir -p private
+    chmod g+w private
+}
+
 remove_sources_placeholder() {
     rm docroot/.placeholder
 }
@@ -91,6 +101,7 @@ check_project_language
 
 # Download upstream sources
 download_sources
+create_files_folder
 remove_sources_placeholder
 download_translations
 
