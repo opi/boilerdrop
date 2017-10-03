@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Any subsequent(*) commands which fail will cause the shell script to exit immediately
+set -e
+
+# Proper owner & group
+sudo chown -R $USER:www-data docroot/files
+sudo chown -R $USER:www-data private
+sudo chown -R $USER:www-data config
+
+# Allow group write permission
+chmod -R g+w docroot/files
+chmod -R g+w private
+chmod -R g+w config
