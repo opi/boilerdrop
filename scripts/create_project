@@ -95,6 +95,11 @@ create_drush_aliases_file() {
     echo "... Creating Drush aliases file. You must review this file."
 }
 
+replace_scripts_placeholder() {
+    sed -i "s#@@PROJECT_NAME@@#$PROJECT_NAME#g" scripts/update_local_from_dev
+    sed -i "s#@@PROJECT_NAME@@#$PROJECT_NAME#g" scripts/update_local_from_prod
+}
+
 # Various checks
 check_project_name
 check_project_language
@@ -108,6 +113,9 @@ download_translations
 # Create local files
 create_local_settings_file
 create_drush_aliases_file
+
+# Replace scripts placeholder
+replace_scripts_placeholder
 
 echo ""
 echo "$PROJECT_NAME successfully created, congrats !"

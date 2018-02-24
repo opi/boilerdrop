@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Move to docroot
+cd docroot
+
+# Get current date
+DATE=`date +%Y-%m-%d_%H-%M-%S`
+
+BACKUP_FOLDER='/tmp'
+
+# Dump database
+drush @@@PROJECT_NAME@@.prod sql-dump > ${BACKUP_FOLDER}/@@PROJECT_NAME@@_prod_${DATE}.sql
+
+# Backup local database
+drush @@@PROJECT_NAME@@.local sql-dump > ${BACKUP_FOLDER}/@@PROJECT_NAME@@_local_${DATE}.sql
+echo "Local database backup: ${BACKUP_FOLDER}/@@PROJECT_NAME@@_local_${DATE}.sql"
+
+# Drop local database
+drush @@@PROJECT_NAME@@.local sql-drop -y
+
+# Import prod database
+drush @@@PROJECT_NAME@@.local sql-cli < ${BACKUP_FOLDER}/@@PROJECT_NAME@@_prod_${DATE}.sql
+
+# Rsync files
+drush rsync -y @@@PROJECT_NAME@@.prod:%files @@@PROJECT_NAME@@.local:%files
+
+# Rsync config
+rm -rf ../config
+drush rsync -y @@@PROJECT_NAME@@.prod:%config @@@PROJECT_NAME@@.local:%config
+
+# Clear cache, why not.
+drush @@@PROJECT_NAME@@.local cc all
