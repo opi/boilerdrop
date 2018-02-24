@@ -15,19 +15,21 @@ BackdropCMS project boilerplate.
 │   ├── staging (*ignored*)
 │   └── versioned (**versioned**)
 ├── docroot (Your website lives here)
+    └── drush/yourproject.aliases.drushrc.php
 └── scripts
+    ├── create_project
+    ├── fix_permissions
     ├── config_export
-    └── config_import
+    ├── config_import
+    ├── update_local_from_dev
+    └── update_local_from_prod
 ```
 
 ## Usage
 
 Clone this repository and remove the `.git` folder.
 
-Install BackdropCMS into the `docroot` folder (helper script to come, see
-TODO.md).
-
-Use the `create_project` script to automatically download sources, translations and create local settings and drush aliases files.    
+Install BackdropCMS into the `docroot` folder or use the `create_project` script to automatically download sources, translations and create local settings and drush aliases files.    
 Usage: `./scripts/create_project <project_name> <language>`
 
 Use [lando](https://docs.devwithlando.io/) for a quick development server. A `.lando.yml` file is already configured for you.
