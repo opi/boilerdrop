@@ -46,6 +46,7 @@ $aliases['local'] = array(
   'root' => '@@DOCROOT_PATH@@',
   'path-aliases' => array(
     '%files' => 'files',
+    '%config' => '../config',
     '%dump' => '/tmp/drush-sql-sync-local.sql',
     '%dump-dir' => '/tmp',
   ),
