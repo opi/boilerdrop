@@ -1,0 +1,4 @@
+name: @@PROJECT_NAME@@
+recipe: backdrop
+config:
+  webroot: ./docroot

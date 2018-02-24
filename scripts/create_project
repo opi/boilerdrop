@@ -96,6 +96,7 @@ create_drush_aliases_file() {
 }
 
 replace_scripts_placeholder() {
+    sed -i "s#@@PROJECT_NAME@@#$PROJECT_NAME#g" .lando.yml
     sed -i "s#@@PROJECT_NAME@@#$PROJECT_NAME#g" scripts/update_local_from_dev
     sed -i "s#@@PROJECT_NAME@@#$PROJECT_NAME#g" scripts/update_local_from_prod
 }
