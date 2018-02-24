@@ -27,8 +27,11 @@ Clone this repository and remove the `.git` folder.
 Install BackdropCMS into the `docroot` folder (helper script to come, see
 TODO.md).
 
-*Experimental:* Use the `create_project` script to automatically download sources, translations and create local settings and drush aliases files.    
+Use the `create_project` script to automatically download sources, translations and create local settings and drush aliases files.    
 Usage: `./scripts/create_project <project_name> <language>`
+
+Use [lando](https://docs.devwithlando.io/) for a quick development server. A `.lando.yml` file is already configured for you.
+Usage: `lando start`
 
 ## Configuration managment settings
 
@@ -66,6 +69,14 @@ It will import versioned configuration from the `config/versioned` folder.
 Visit `yoursite.com/admin/config/development/configuration/full/import` to
 update your production site.
 
-### Todo
+## Update local project with production data & settings
+
+```bash
+./scripts/update_local_from_prod
+```
+
+It will update the database, rsync the files and configuration.
+
+## Todo
 
 See [TODO.md](TODO.md).
