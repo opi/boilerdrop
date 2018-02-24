@@ -30,10 +30,16 @@ BackdropCMS project boilerplate.
 Clone this repository and remove the `.git` folder.
 
 Install BackdropCMS into the `docroot` folder or use the `create_project` script to automatically download sources, translations and create local settings and drush aliases files.    
-Usage: `./scripts/create_project <project_name> <language>`
+Usage:
+```bash
+./scripts/create_project <project_name> <language>
+```
 
 Use [lando](https://docs.devwithlando.io/) for a quick development server. A `.lando.yml` file is already configured for you.
-Usage: `lando start`
+Usage:
+```bash
+lando start
+```
 
 ## Configuration managment settings
 
