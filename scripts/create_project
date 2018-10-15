@@ -8,7 +8,7 @@ PROJECT_NAME=$1
 PROJECT_LANGUAGE=$2
 
 # Global variables
-BACKDROP_STABLE_VERSION="1.11.0"
+BACKDROP_STABLE_VERSION="1.11.1"
 
 
 check_project_name() {
