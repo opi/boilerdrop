@@ -63,7 +63,7 @@ download_translations() {
     if [ -n "$PROJECT_LANGUAGE" ]; then
         echo "... Downloading $PROJECT_LANGUAGE translations"
         mkdir -p docroot/files/translations
-        wget -q "http://ftp.drupal.org/files/translations/7.x/drupal/drupal-7.56.$PROJECT_LANGUAGE.po"
+        wget -q "http://ftp.drupal.org/files/translations/7.x/drupal/drupal-7.60.$PROJECT_LANGUAGE.po"
         mv drupal-7.56.fr.po docroot/files/translations
     fi
 }
