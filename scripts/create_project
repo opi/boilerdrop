@@ -102,6 +102,10 @@ replace_scripts_placeholder() {
     sed -i "s#@@PROJECT_NAME@@#$PROJECT_NAME#g" scripts/update_local_from_prod
 }
 
+remove_self_repository() {
+    rm -rf .git
+}
+
 # Various checks
 check_project_name
 check_project_language
@@ -118,6 +122,9 @@ create_drush_aliases_file
 
 # Replace scripts placeholder
 replace_scripts_placeholder
+
+# Remove boilerdrop's git repository
+remove_self_repository
 
 echo ""
 echo "$PROJECT_NAME successfully created, congrats !"
