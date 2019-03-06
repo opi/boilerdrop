@@ -9,3 +9,7 @@
 - [ ] Code check helpers (PHPCS and other CSS/JS linters)
 
 - [x] Create private files directory, outside of webroot, with proper permissions.
+
+- [ ] Configure private file path to `../private`.
+
+- [ ] Override `README.md` file with project name.
