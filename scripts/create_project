@@ -56,10 +56,6 @@ create_files_folder() {
     chmod g+w private
 }
 
-remove_sources_placeholder() {
-    rm docroot/.placeholder
-}
-
 download_translations() {
     if [ -n "$PROJECT_LANGUAGE" ]; then
         echo "... Downloading $PROJECT_LANGUAGE translations"
@@ -102,7 +98,14 @@ replace_scripts_placeholder() {
     sed -i "s#@@PROJECT_NAME@@#$PROJECT_NAME#g" scripts/update_local_from_prod
 }
 
-remove_self_repository() {
+self_cleanup() {
+    # Remove sources placeholder
+    rm docroot/.placeholder
+
+    # Remove TODO
+    rm TODO.md
+
+    # Remove self repository
     rm -rf .git
 }
 
@@ -113,7 +116,6 @@ check_project_language
 # Download upstream sources
 download_sources
 create_files_folder
-remove_sources_placeholder
 download_translations
 
 # Create local files
@@ -123,8 +125,8 @@ create_drush_aliases_file
 # Replace scripts placeholder
 replace_scripts_placeholder
 
-# Remove boilerdrop's git repository
-remove_self_repository
+# Cleanup Boilerdrop's files
+self_cleanup
 
 echo ""
 echo "$PROJECT_NAME successfully created, congrats !"
