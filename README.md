@@ -27,9 +27,12 @@ BackdropCMS project boilerplate.
 
 ## Usage
 
-Clone this repository and remove the `.git` folder.
+Clone this repository:
+```bash
+git clone https://github.com/opi/boilerdrop
+```
 
-Install BackdropCMS into the `docroot` folder or use the `create_project` script to automatically download sources, translations and create local settings and drush aliases files.    
+Use the `create_project` script to automatically download sources, translations and create local settings and drush aliases files.    
 Usage:
 ```bash
 ./scripts/create_project <project_name> <language>
