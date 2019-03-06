@@ -9,6 +9,7 @@ PROJECT_LANGUAGE=$2
 
 # Global variables
 BACKDROP_STABLE_VERSION="1.12.3"
+DRUPAL_7_LATEST_VERSION="7.64"
 
 
 check_project_name() {
@@ -63,8 +64,8 @@ download_translations() {
     if [ -n "$PROJECT_LANGUAGE" ]; then
         echo "... Downloading $PROJECT_LANGUAGE translations"
         mkdir -p docroot/files/translations
-        wget -q "http://ftp.drupal.org/files/translations/7.x/drupal/drupal-7.64.$PROJECT_LANGUAGE.po"
-        mv drupal-7.64.fr.po docroot/files/translations
+        wget -q "http://ftp.drupal.org/files/translations/7.x/drupal/drupal-$DRUPAL_7_LATEST_VERSION.$PROJECT_LANGUAGE.po"
+        mv "drupal-$DRUPAL_7_LATEST_VERSION.fr.po" docroot/files/translations
     fi
 }
 
