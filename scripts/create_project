@@ -76,7 +76,7 @@ create_local_settings_file() {
     # Replace variable
     sed -i "s#@@PROJECT_NAME@@#$PROJECT_NAME#g" docroot/settings.local.php
 
-    echo "... Creating settings.local.php file. You must edit database configuration before proceeding to installation."
+    echo "... Creating docroot/settings.local.php file. You must edit database configuration before proceeding to installation."
 }
 
 create_drush_aliases_file() {
