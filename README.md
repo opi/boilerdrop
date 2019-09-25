@@ -44,7 +44,7 @@ Usage:
 lando start
 ```
 
-## Configuration managment settings
+## Configuration management settings
 
 Use the following configuration in your `settings.php` file.
 
@@ -58,7 +58,7 @@ Ressources:
 - http://www.jenlampton.com/blog/managing-backdrop-cms-config-files-git
 - https://github.com/backdrop/backdrop-issues/issues/855#issuecomment-91406032
 
-## Configuration managment usage
+## Configuration management usage
 
 ### Export (development process)
 
